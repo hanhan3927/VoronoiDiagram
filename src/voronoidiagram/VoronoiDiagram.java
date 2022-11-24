@@ -6,7 +6,7 @@
 package voronoidiagram;
 import java.util.*;
 import java.awt.Point;
-import javafx.scene.paint.Color;
+//import javafx.scene.paint.Color;
 import voronoidiagram.Var.Line;
 import voronoidiagram.UI;
 /**
@@ -42,7 +42,10 @@ public class VoronoiDiagram {
         l_b.add(Bisection(pp.get(0),pp.get(1)));             
         l_b.add(Bisection(pp.get(1),pp.get(2)));
         l_b.add(Bisection(pp.get(0),pp.get(2)));
-        
+        System.out.println(" pppp"+l_b.get(1).getName());
+        System.out.println(" "+l_b.get(2).getName());
+        System.out.println(" "+l_b.get(3).getName());
+        System.out.println(" "+l_b.get(4).getName());
         // ther will have normal sutuation and 2 exceptions
         
         /*
@@ -212,6 +215,13 @@ public class VoronoiDiagram {
         tmp_vd_l.add(vd_l_s.get(vd_l_s.size()-1));
         tmp_ch.add(ch_l.get(ch_l.size()-1));
         
+        for(int ii = 0;ii<tmp_hd.get(0).size();ii++){
+            System.out.println(tmp_hd.get(0).get(ii).getX()+"%%"+tmp_hd.get(0).get(ii).getY());
+        }
+        System.out.println("----");
+        for(int ii = 0;ii<tmp_hd.get(1).size();ii++){
+            System.out.println(tmp_hd.get(1).get(ii).getX()+"%%%"+tmp_hd.get(1).get(ii).getY());
+        }
         
         //right
         VD2(tmp_hd.get(1),vd_l_s,ch_l,hp_l); 
@@ -226,7 +236,7 @@ public class VoronoiDiagram {
     }
     
     /*
-        The CCW function is for Graham's scan, if the value is:
+        The CCW(counter-clockwise turn) function is for Graham's scan, if the value is:
             >0 ==> turn left, return -1
             0  ==> 3 points are on the smae line, return 0
             <0 ==> turn right, return 1
@@ -369,7 +379,8 @@ public class VoronoiDiagram {
         cl,cr ==> Convex Hull on the left and right side
     
     */
-    static ArrayList<Line> Merge_VD(ArrayList<Point>pl,ArrayList<Point> pr,ArrayList<Point>cl,ArrayList<Point> cr,ArrayList<Line> ll,ArrayList<Line> lr,ArrayList<Line> HP){        
+    static ArrayList<Line> Merge_VD(ArrayList<Point>pl,ArrayList<Point> pr,ArrayList<Point>cl,ArrayList<Point> cr,ArrayList<Line> ll,ArrayList<Line> lr,ArrayList<Line> HP){
+
         // two voronoi diagram outer tangent
         ArrayList<Line> outer_tangent=OuterTangent(cl,cr);        
         System.out.print(outer_tangent.get(0).getName()+" /// ");
