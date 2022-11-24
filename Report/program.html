@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>程式設計</title>
+<link rel="stylesheet" type="text/css" href="style.css" />
+
+</head>
+	
+<body style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', 'monospace'">
+	<div class="Title">程式設計</div>
+	<div class="Item">
+	  <div class="Item1">
+		<p class="litile_title"> 點線資料結構</p>
+			<ul>
+				<li>點: Point(int x,int y)</li>
+			  <li>線: Line(Point p1,Point p2)。<br>
+				  <ul>此類別(Var.Line)也分別記錄了
+					  <li>(1)斜率: m</li>
+					  <li>(2)線的公式(y=mx+k)</li>
+					  <li>(3) 線段中點: pmid</li>
+				  <br></ul>
+				  <ul>
+				    也提供多種功能函式
+					  <li>(1)取得所組成線段的兩點: getName</li>
+					  <li>(2)點是否在線段上: PointOnLineSegment </li>
+				    <li>(3)點在線段上或是在線段上下方: Point_Line</li>
+				    <li>(4)算線段斜率: Slope</li>
+				    <li>(5)檢測兩線斷是否相同斜率:isSameSlope</li>
+				    <li>(6)兩線段交點:Cross</li>
+				    <li>(7)兩線段是否相交:isCross</li>
+				    <li>(8)是否相同向量:isSameVector<br>
+			        </li>
+				  </ul>
+			</ul>
+		</div>
+	  <div class="Item1">
+		<p class="litile_title"> Convex Hull</p>
+		  一組平面的點的凸包是包含所有點的最小凸多邊形。
+		  <ul>
+			  <li>對應程式函式: VoronoiDiagram.CH(ArrayList&lt;Point&gt; 
+			    <Point> ps)</li>
+			  <li>輸入: 一個存放Point的ArrayList</li>
+			  <li>回傳: 一個存放Point的ArrayList，包含Convex Hull凸包上的所有點，且由最左下角開始逆時針存放於ArrayList</li>
+			  <li>步驟:
+			  	  <ul>
+					<li>Step 1: 找出最左下角的點，由此點開始出發。並針對小於三點的情況直接回傳結果。</li>
+					<li>Step 2: 最左下角的點與每一點連接。</li>
+					<li>Step 3: 相對於X軸依角度排序。</li>
+					<li>Step 4: 由角度最小的點開始連接Convex Hull。</li>
+					<li>Step 5: 如果依照最小角度的點開始連接，並會以逆時針連接Convex Hull各點。利用VoronoiDiagram.CCW(Point p1,Point p2,Point p3)可檢查順逆時鐘，如遇到順時鐘則刪除p2這點。</li>
+					<li>Step 6: 如果連接下個點是順時針，則將前一個點刪除，並檢查是否維持逆時針。</li>
+					<li>Step 7: 如遇到最左下角的點則為結束，如未遇到則繼續Step 6。此時所有點就是Convex Hull的所有點，且照順序連接。</li>
+			  	  </ul>
+			  </li>
+			  <li>時間複雜度分析:此演算法不是用利用Voronoi Diagram找出Convex Hull，所以無法達到O(n)。但依照角度排序產生Convex Hull，利用快速排序可達O(nlogn)，加上只需要各點都找一次O(n)，所以時間複雜度為O(nlogn)。
+		  </ul>
+		</div>
+	  <div class="Item1">
+		<p class="litile_title"> Divide-and-Conquer for Voronoi diagram</p>
+		  <ul>
+		    <li>對應程式函式: VoronoiDiagram.VD2(ArrayList&lt;Point&gt; vd_p,ArrayList&lt;ArrayList&lt;Line&gt;&gt;vd_l_s,ArrayList&lt;ArrayList&lt;Point&gt;&gt; ch_l,ArrayList&lt;ArrayList&lt;Line&gt;&gt; hp_l){ <br>
+Var.SortPoint(vd_p);</li>
+		    <li>輸入
+				<ul>
+					<li>vd_p : 測試資料，所有點集合</li>
+					<li>vd_l : 存放結果，Voronoi Diagram的線段</li>
+					<li>vd_hp: 存放結果，Voronoi Diagram的hyper plane</li>
+					<li>ch_l : 存放結果，Convex Hull</li>
+				</ul>
+			</li>
+		    <li>回傳: 會將結果各別放到vd_l，vd_hp，ch_l中</li>
+		    <li>步驟:
+		  	    <ul>
+				  <li>Step 1: 直接執行VoronoiDiagram.CH函式得此筆測資的Convex Hull，並存放於ch_l變數中。</li>
+				  <li>Step 2: 檢查特殊情況。
+				  	<ul>
+						<li>小於兩點: 直接做處理並回傳</li>
+						<li>皆為相同的X座標: 直接做處理並回傳結果</li>
+					</ul>
+				  </li>
+				  <li>Step 3: Divide，將點分割成左右兩半。利用VoronoiDiagram.Half_Dive(ArrayList&lt;Point&gt; p)函式，可將輸入的點進行Divide動作，分割成兩半並將兩半分別包裝，回傳分割好的結果。</li>
+				  <li>Step 4: 將兩組點分別在放入VoronoiDiagram.VD2函式進行遞迴。並將等待回傳結果，將結果個別存起來。</li>
+				  <li>Step 5: Merge, 將兩半的結果進行結合。利用VoronoiDiagram.Merge_VD(ArrayList&lt;Point&gt;pl,ArrayList&lt;Point&gt; pr,ArrayList&lt;Point&gt;cl,ArrayList&lt;Point&gt; cr,ArrayList&lt;Line&gt; ll,ArrayList&lt;Line&gt; lr,ArrayList&lt;Line&gt; HP)，進行將左右兩半的Voronoi Diagram結合成一個Voronoi Diagram。<br><br>
+				  	<ul><strong>*Merge_VD函式變數說明:</strong>
+						<li>pl,pl: points on the right and left side </li>
+						<li>ll,lr: vornoi diagram lines on the left and right side </li>
+						<li>cl,cr: Convex Hull on the left and right side</li>
+						<li>HP: 用來存放結合後的Hyper Plane</li>
+					</ul><br><br>
+					<ul><strong>*Merge_VD函式說明:</strong>
+						<li>使用VoronoiDiagram.OuterTangent(ArrayList<Point> cl,ArrayList<Point> cr)。傳入左右兩邊的Convex Hull，找出兩凸多邊形上下外公切線，將以兩外公切線為起點與終點，劃出Hyper Plane，將兩個Voronoi Diagram做結合。</li>
+						<li>本程式以上外公切線為起點，劃出兩點的中垂線(使用VoronoiDiagram.Bisection函式，中垂線函式簡單不多做說明)</li>
+						<li>由下開始畫中垂線，如與左或右邊的Voronoi Diagram線段相交，則中垂線畫到相交的點為止，並替換相交到的線段所屬的那邊的點，替萬後在開始從相交的點向下畫中垂線。</li>
+						<li>重複上述動作，直到兩點都替換變為下公切線所連接的兩點。合併即為結束</li>
+					</ul><br><br>
+					<ul><strong>*OuterTangent函式說明:</strong>
+						<li>選擇左右兩邊的Convex Hull形成凸包上的點各一點，形成一條線</li>
+						<li>判斷這條線是否是否所有點都在同一邊。</li>
+						<li>如果所有點都在同邊代表找到上下公切線</li>
+						<li>複雜度分析:此需要取兩邊各一點做檢查，所以時間複雜度為O(n^2)</li>
+					</ul><br><br>
+				  </li>
+				  <li>Step 6: 將結果存在個變數後，回傳。</li>
+				 
+		  	    </ul>
+		    </li>
+		    <li>時間複雜度分析:因受OuterTangent函式，此部分時間複雜度為O(n^2)。
+	    </ul>
+		</div>
+
+	</div>
+	<div class="back"><a href="index.html">返回首頁</a></div>
+</body>
+</html>

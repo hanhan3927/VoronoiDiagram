@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>軟體說明</title>
+<link rel="stylesheet" type="text/css" href="style.css" />
+
+</head>
+	
+<body>
+	<div class="Title">軟體說明</div>
+	<div class="Item">
+		<div class="Item1">
+			<p class="litile_title">軟體安裝</p>
+			<p>需事先到Java官網安裝，Java SE Development Kit (JDK)軟體。</p>
+			<p>安裝完畢後，直接點擊資料內"<em><strong> VoronoiDiagram.jar </strong></em>"就可執行本程式。</p>
+		</div>
+		<div class="Item1">
+			<p class="litile_title">使用說明</p>
+			<ul ><p style="font-size: 23px;font-weight: bolder;color:rgba(47,95,249,1.00)">操作步驟</p>
+				<ul>
+					<li>選擇資料輸入方式
+						<ul>
+							<li>畫布輸入: 從畫布直接用滑鼠點擊畫布產生測試點</li>
+							<li>檔案輸入: 直接點選 "Read From File按鈕"，即可選取資料，下方"Last/Next Data按鈕"可選取輸入測資</li>
+							<li>隨機產生輸入: 在"Random Point按鈕旁的白色方框"輸入需要產生點的數量，在按下"Radom Point按鈕"即可隨機產生測試資料</li>
+						</ul>
+					<br></li>
+					<li>設定線與點的顏色: 在介面右邊的Setting進行設定</li><br>
+					<li>執行
+						<ul>
+							<li>直接執行:點擊"Run按鈕"可直接顯示結果</li>
+							<li>每個步驟執行:點擊"Step by Step按鈕"可看Divide and Conquer的每個步驟執行的結果</li>
+						</ul>
+					<br></li>
+					<li>輸出結果: 點擊"Out the result按鈕"即可輸出特定格式輸出檔案<br></li>
+				</ul>
+			</ul>
+			<ul ><p style="font-size: 23px;font-weight: bolder;color:rgba(47,95,249,1.00)">檔案</p>
+				<ul>
+					<li>可讀取測試檔案(<a href="test/vd_testdata.in">vd_testdata.in</a>、<a href="test/vd_testdata_pure.in">vd_testdata.invd_testdata_pure.in</a>)</li>
+					<li>可讀取輸出結果檔案(<a href="test/out.txt">test/out.txt</a>)</li>
+				</ul>
+			</ul>
+			<ul ><p style="font-size: 23px;font-weight: bolder;color:rgba(47,95,249,1.00)">各物件說明</p>
+				<img src="IMG/UI.png">
+				<ul><strong>畫布</strong>
+					<ul>
+						<li>大小 600*600</li>
+						<li>滑鼠可在畫布上自由點選，點擊後，點的座標資訊會加入右方Point List 白色方框中</li>
+						<li>畫布下方顯示目前座標</li>
+					</ul>
+				
+				<br></ul>
+				<ul> <strong>Setting</strong>
+					<ul>
+						<li><strong>Point Color:</strong> 設定點顏色</li>
+						<li><strong>VD Line Color1:</strong>  設定Divide and Conquer後，左邊Voronoi Diagram顏色</li>
+						<li><strong>VD Line Color2:</strong>  設定Divide and Conquer後，右邊Voronoi Diagram顏色</li>
+						<li><strong>CH Line Color1:</strong>  設定Divide and Conquer後，左邊Convex Hull顏色</li>
+						<li><strong>CH Line Color2:</strong>  設定Divide and Conquer後，右邊Convex Hull顏色</li>
+						<li><strong>HP Line Color2:</strong>  設定Divide and Conquer後，右邊Hyper Plane顏色</li>
+						<li><strong>HP Line Color2:</strong>  設定Divide and Conquer後，右邊Hyper Plane顏色</li>
+				  </ul>
+				<br></ul>
+				<ul> <strong>Generate Point</strong>
+					<ul>
+						<li><strong>Random Point:</strong> 在左邊輸入數量，可產生相對應數量的點在畫布上</li>
+						<li><strong>Read From File:</strong>  點擊之後，會跳出選擇檔案視窗，選擇測資檔案即可輸入檔案測資</li><img src="IMG/readfile.png">
+						<li><strong>Last/Next Data:</strong> 可選擇從檔案輸入測資，如測資有數筆，則可前後選擇，相對應檔案名稱與目前在第幾筆測資與總共幾筆測資會顯示在下方</li>
+					</ul>
+				<br></ul>
+				<ul> <strong>Point List</strong>
+					<ul>
+						<li><strong>白色方框:</strong> 會顯示目前畫布上所有點的位置</li>
+						<li><strong>Remove Select Point:</strong> 可從白色方框選取點，在點擊此按鈕，則可將此點做刪除動作</li>
+						<li><strong>Clear All:</strong> 在點擊此按鈕，可將所有畫布做清除</li>
+					</ul>
+				<br></ul>
+				<ul> <strong>Excute</strong>
+					<ul>
+						<li><strong>Run:</strong> 直接執行此程式</li>
+						<li><strong>Step by Step:</strong> 逐一執行每個步驟</li>
+						<li><strong>Out the result:</strong> 將結果輸出為檔案</li>
+					</ul>
+				<br></ul>
+				
+			</ul>
+		</div>
+	</div>
+	<div class="back"><a href="index.html">返回首頁</a></div>
+</body>
+</html>

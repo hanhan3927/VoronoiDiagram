@@ -1,0 +1,35 @@
+body{
+	font-family: consolas;
+}
+.Title {
+	font-size: 40px;
+}
+.Info{
+	
+	font-size: 20px;
+	font-weight: bolder;
+}
+.Option{
+
+}
+.litile_title{
+	font-size: 25px;
+	color: rgba(255,67,70,1.00);
+	font-style: italic;
+	font-weight: bold;
+	
+}
+.Item1{
+	margin-left: 40px;
+	font-size: 20px;
+	
+}
+.Item{
+	
+}
+.back{
+	font-size: 20px;
+	font-style: italic;
+	font-weight: bolder;
+	
+}

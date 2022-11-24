@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>軟體規格</title>
+<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+	
+<body >
+	<div class="Title">軟體測試與實驗結果</div>
+	<div class="Item">
+		<div class="Item1">
+			<p class="litile_title">程式語言:Java</p>
+		</div>
+		<div class="Item1">
+			<p class="litile_title">編譯器版本:JDK 1.8</p>
+		</div>
+		<div class="Item1">
+			<p class="litile_title">系統環境</p>
+			<ul>
+				<li>作業系統:Windows 10 64位元</li>
+				<li>處理器:Intel(R)Core(TM)i7-7700K CPU @4.20GHz </li>
+				<li>記憶體:16.0GB</li>
+			</ul>
+		</div>
+		<div class="Item1">
+			<p class="litile_title">可執行情況</p>
+			<ul>
+				<img src="IMG/6.png"><br><br>
+				<ul>
+					<li>Voronoi Diagram 目前最高"6"點可正常顯示</li>
+				</ul>
+			</ul>
+		</div>
+		<div class="Item1">
+			<p class="litile_title">無法執行情況</p>
+			<ul>
+				<ul> 
+					<li><strong>線段無法消除:</strong> Voronoi Diagram 目前最高"6"點可正常顯示，但有些情況會無法消除一些多於線段，如下圖測資<a href="test/6_not_work.in">(測資下載)</a><br>
+						<img src="IMG/6_not_work.png"><br><br>
+					</li>
+					<li><strong>焦點在邊界外:</strong> Voronoi Diagram則無法正常顯示，受限於線段資料結構的關係，本程式會將無限遠的線做裁切，以控制現在畫布中，進而使演算法無法判斷此線段是無限遠的一條線或是一個線段，進而使在做Merge的情況下發生錯誤。(<a href="test/out_range.in">測資下載</a>)<br><br>
+					</li>
+					<li><strong>7點以上:</strong> 七點以上因為線段資料結構上，無法判斷是否為線段或是無限延伸的線，導致程式錯誤。(<a href="test/7_not_work.in">測資下載</a>)<br> 
+					<img src="IMG/7_not_work.png"><br><br>
+					</li>
+					<li><strong>Convex Hull :</strong>超過一百點都可正常顯示(未加入Voronoi Diagram時測試)，但是因程式結構關係影響，Voronoi Diagram六點以上就會出錯，導致整個Convex Hull圖形無法畫出</li>
+				</ul>
+			</ul>
+		</div>
+		<div class="Item1">
+			<p class="litile_title">解決方法</p>
+			<ul>
+				<ul> 
+					<li><strong>線段無法消除:</strong> 重新審視資料結構，避免有些線段沒有檢查。</a><br><br>
+						
+					</li>
+					<li><strong>焦點在邊界外:</strong> 須重新設計線的資料結構，以區分線段及無限延伸的線的區別。<br><br>
+					</li>
+					<li><strong>7點以上:</strong> 須重新設計線的資料結構，以區分線段及無限延伸的線的區別。<br><br> </li>
+					<li><strong>Convex Hull:</strong>如果Voronoi Diagram與Convex Hull在不同函式執行就可避免此種情形</li>
+				</ul>
+			</ul>
+		</div>
+		<div class="Item1">
+			<p class="litile_title">測試檔案</p>
+			<ul>
+				<ul> 
+					*所有測試資料皆在"test"資料夾內<br><br>
+					<li><strong>無註解測資:<a href="test/vd_testdata_pure.in">vd_testdata_pure.in</a></strong></li>
+					<li><strong>有註解測資:<a href="test/vd_testdata.in">vd_testdata.in</a></strong></li>
+					<li><strong>輸出結果檔案:可自訂路徑，檔案名稱將會是"output.txt"(<a href="test/out.txt">範例輸出檔案下載</a>)</strong></li>
+				</ul>
+			</ul>
+		</div>
+	</div>
+	<div class="back"><a href="index.html">返回首頁</a></div>
+</body>
+</html>

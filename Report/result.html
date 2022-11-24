@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>結論與心得</title>
+<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+	
+<body style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', 'monospace'">
+	<div class="Title">結論與心得</div>
+	<div class="Item">
+		  <div class="Item1">
+			  <p>
+				  事前的資料結構應該謹慎思考，重點在於線段因考慮畫布大小而使應該為無限延伸之線變為線段，在畫Hyper Plane時，畫中垂線時需判斷是否有交到任何左右Voronoi Diagram的線段，進而替換那邊的點，再以交到的線段的那點出發，畫中垂線直到交到另一個Voronoi Diagram的線段。但有時會Voronoi Diagram線段會在邊界外，此時就無法判斷是否有交到那條在邊界外的Voronoi Diagram的線段，造成取到別的點或是最後無法替換到組成下公切線的兩點而形成無限迴圈。
+				  在於Merge時，有些線段需要做清除，但是還是有無清除之線段，這點也是需要重新檢視程式的地方。
+				  第一階段的測試也不是利用Divide and Conquer來實作Voronoi Diagram，利用判斷鈍角和是銳角來畫Voronoi Diagram。使得點與線段的資料結構皆以可以完成三點內包含三點的情況來設計。而在到第二階段要利用Divide-and-Conquer來實作Voronoi Diagram，照測資一個一個測試，當作到四點時進入到五點，測試資料出現交於邊界外的情況才發現資料結構有嚴重缺失，此時時間已來不及修改資料結構，且許多函式皆基於此資料結構來實作。
+				  經過此次實作，了解了事前規劃須需慎重與全盤考量，如未做好規劃，會導致後面越來越多困難，且發現以為時已晚。
+				  
+			  </p>
+		  </div>
+	</div>
+	<div class="back"><a href="index.html">返回首頁</a></div>
+</body>
+</html>

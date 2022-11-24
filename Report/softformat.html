@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>軟體規格</title>
+<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+	
+<body >
+<div class="Title">
+	軟體規格
+</div>
+<div class="Item">
+	<div class="Item1">
+		<p class="litile_title">輸入與輸出</p>
+		<ul> <p style="font-size: 22px; color: rgba(122,40,255,1.00);font-weight: bolder">輸入</p>
+			<ul>
+				<li>滑鼠可在畫布上自由點選，並按「Run」執行程式，顯示運算結果。</li>
+				<li>從檔案輸入，格式範例可參考同資料夾的「<a href="test/vd_testdata_pure.in">vd_testdata_pure.in</a>」。第一個數字為n。n為自然數或0，表示此組測驗中會有n個點的輸入，n之下會有n行資料，每行中有每個點的x, y座標，x與y都在0～600的範圍內。若n為0時，則表示此讀檔結束。</li>
+				<li>可從Generate Point -> Random Point按鈕旁輸入數量n，點擊按鈕後就可產生隨機n點</li>
+			</ul>
+		</ul>
+		<ul> <p style="font-size: 22px; color: rgba(122,40,255,1.00);font-weight: bolder">輸出</p>
+			<ul>
+				<li>輸出檔包含輸入點的座標，與執行結果的所有線段。若線段超出畫布邊界，則只計算到畫布的邊界。</li>
+				<li>輸出檔案格式如「<a href="test/out.txt">out.txt</a>」。<br>
+				輸入的座標點：P x y    // 每個點佔一行，兩整數 x, y 為座標。<br>
+				線段：E x1 y1 x2 y2      // (x1, y1) 為起點，(x2, y2) 為終點，其中 x1≦x2 或 x1=x2, y1≦y2<br>
+				座標點排列在前半段，線段排列在後半段。座標點以 lexical order順序排列（即先排序第一維座標，若相同，則再排序第二維座標；線段亦以 lexical order順序排列
+				</li>
+			</ul>
+		</ul>
+	</div>
+	<div class="Item1">
+		<p class="litile_title">介面規格與功能規格</p>
+		<img src="IMG/UI.png">
+		<ul><p style="font-size: 22px; color: rgba(122,40,255,1.00);font-weight: bolder">介面規格</p>
+			<ul>
+				畫布
+				<ul>
+					<li>大小 600*600</li>
+					<li>滑鼠可在畫布上自由點選，點擊後，點的座標資訊會加入右方Point List 白色方框中</li>
+					<li>畫布下方顯示目前座標</li>
+				</ul>
+					
+			</ul>
+			<ul> Setting
+				<ul>
+					<li><strong>Point Color:</strong> 設定點顏色</li>
+					<li><strong>VD Line Color1:</strong>  設定Divide and Conquer後，左邊Voronoi Diagram顏色</li>
+					<li><strong>VD Line Color2:</strong>  設定Divide and Conquer後，右邊Voronoi Diagram顏色</li>
+					<li><strong>CH Line Color1:</strong>  設定Divide and Conquer後，左邊Convex Hull顏色</li>
+					<li><strong>CH Line Color2:</strong>  設定Divide and Conquer後，右邊Convex Hull顏色</li>
+					<li><strong>HP Line Color2:</strong>  設定Divide and Conquer後，右邊Hyper Plane顏色</li>
+					<li><strong>HP Line Color2:</strong>  設定Divide and Conquer後，右邊Hyper Plane顏色</li>
+			  </ul>
+			</ul>
+			<ul> Generate Point
+				<ul>
+					<li><strong>Random Point:</strong> 在左邊輸入數量，可產生相對應數量的點在畫布上</li>
+					<li><strong>Read From File:</strong>  點擊之後，會跳出選擇檔案視窗，選擇測資檔案即可輸入檔案測資</li>
+					<li><strong>Last/Next Data:</strong> 可選擇從檔案輸入測資，如測資有數筆，則可前後選擇，相對應檔案名稱與目前在第幾筆測資與總共幾筆測資會顯示在下方</li>
+				</ul>
+			</ul>
+			<ul> Point List
+				<ul>
+					<li><strong>白色方框:</strong> 會顯示目前畫布上所有點的位置</li>
+					<li><strong>Remove Select Point:</strong> 可從白色方框選取點，在點擊此按鈕，則可將此點做刪除動作</li>
+					<li><strong>Clear All:</strong> 在點擊此按鈕，可將所有畫布做清除</li>
+				</ul>
+			</ul>
+			<ul> Excute
+				<ul>
+					<li><strong>Run:</strong> 直接執行此程式</li>
+					<li><strong>Step by Step:</strong> 逐一執行每個步驟</li>
+					<li><strong>Out the result:</strong> 將結果輸出為檔案</li>
+				</ul>
+			</ul>
+		</ul>
+		<ul><p style="font-size: 22px; color: rgba(122,40,255,1.00);font-weight: bolder">功能規格</p>
+			<ul> 資料輸入
+				<ul>
+					<li>利用滑鼠在畫布點擊</li>
+					<li>可從檔案輸入</li>
+					<li>隨機產生N個點(數量N可由使用者決定)</li>
+					<li>可刪除單一資料點</li>
+				</ul>
+				
+			</ul>
+			<ul> 執行
+				<ul>
+					<li>執行直接顯示結果</li>
+					<li>可Step by Step執行</li>
+				</ul>	
+			</ul>
+			<ul> 顯示
+				<ul>
+					<li>可更改各種線段與點的顏色以區分不同線段與點的意義</li>
+				</ul>	
+			</ul>
+		</ul>
+	</div>
+	<div class="Item1">
+		<p class="litile_title">軟體測試規劃書</p>
+		<ul>
+			<li>將使用"<a href="test/vd_testdata.in">vd_testdata.in</a>"進行測試</li>
+			<li>測試讀檔是否支援有註解之檔案</li>
+			<li>將測試檔案依照點數多寡做測試區</li>
+			<li>加入一些特殊測資(如不同斜率的共線，交點在邊界外)</li>
+			<li>交點座標可能計算後為浮點數，如何判斷是否為同一交點須審慎思考</li>
+			<li>變數資料是否都進行清空，如未清空可能導致下次產生錯誤結果</li>
+		</ul>
+	</div>
+	
+</div>
+
+</body>
+</html>
